@@ -237,7 +237,3 @@ ruff check . && ruff format --check .
 The tests run offline: a scripted model stands in for the LLM and an in-memory fake stands in
 for GitHub. The tests in `tests/test_retriever.py` that check real embedding quality download
 a model and are skipped in CI.
-
-## License
-
-MIT. See [LICENSE](LICENSE).
