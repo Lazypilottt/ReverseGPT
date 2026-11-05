@@ -1,4 +1,27 @@
-__pycache__
-env
-vectorstore
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+
+# Environments
+env/
+venv/
+.venv/
+
+# Local config and secrets
 config.ini
+.env
+
+# Generated at runtime
+vectorstore/
+logs/
+output/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store

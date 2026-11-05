@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reversegpt"
+version = "1.0.0"
+description = "Turn natural-language requests into chained API calls with a planner and Reverse Chain."
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Aditya Yadav" }]
+requires-python = ">=3.10"
+keywords = ["llm", "tool-use", "function-calling", "agents", "langchain", "faiss"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "langchain-core>=1.0,<2",
+    "langchain-community>=0.4,<1",
+    "langchain-openai>=1.0,<2",
+    "langchain-huggingface>=1.0,<2",
+    "sentence-transformers>=3.0",
+    "faiss-cpu>=1.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+reversegpt = "reversegpt.cli:main"
+
+[project.urls]
+Repository = "https://github.com/Lazypilottt/ReverseGPT"
+
+[tool.setuptools]
+packages = ["reversegpt"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM"]
+ignore = ["E501"]

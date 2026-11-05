@@ -1,0 +1,23 @@
+{
+  "name": "prioritize_objects",
+  "description": "Returns the given work items sorted by priority. How priority is decided is an internal implementation detail.",
+  "arguments": [
+    {
+      "name": "objects",
+      "type": "array of strings",
+      "required": true,
+      "description": "The work items to prioritize."
+    }
+  ],
+  "returns": [
+    {
+      "name": "prioritized_objects",
+      "type": "array of strings",
+      "description": "The same work items, sorted by priority."
+    }
+  ],
+  "examples": [
+    "Prioritize these work items",
+    "Sort the work items by priority"
+  ]
+}

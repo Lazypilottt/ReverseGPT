@@ -1,0 +1,91 @@
+{
+  "name": "work_list",
+  "description": "Returns a list of work items (issues, tickets, tasks) matching the given filters.",
+  "arguments": [
+    {
+      "name": "applies_to_part",
+      "type": "array of strings",
+      "required": false,
+      "description": "Filters for work belonging to any of the provided parts."
+    },
+    {
+      "name": "created_by",
+      "type": "array of strings",
+      "required": false,
+      "description": "Filters for work created by any of these users."
+    },
+    {
+      "name": "issue.priority",
+      "type": "array of strings",
+      "required": false,
+      "description": "Filters for issues with any of the provided priorities. Allowed values: p0, p1, p2, p3."
+    },
+    {
+      "name": "issue.rev_orgs",
+      "type": "array of strings",
+      "required": false,
+      "description": "Filters for issues with any of the provided Rev organizations."
+    },
+    {
+      "name": "limit",
+      "type": "integer",
+      "required": false,
+      "description": "The maximum number of work items to return. Defaults to 50."
+    },
+    {
+      "name": "owned_by",
+      "type": "array of strings",
+      "required": false,
+      "description": "Filters for work owned by any of these users."
+    },
+    {
+      "name": "stage.name",
+      "type": "array of strings",
+      "required": false,
+      "description": "Filters for records in the provided stage(s) by name, for example triage."
+    },
+    {
+      "name": "ticket.needs_response",
+      "type": "boolean",
+      "required": false,
+      "description": "Filters for tickets that need a response."
+    },
+    {
+      "name": "ticket.rev_org",
+      "type": "array of strings",
+      "required": false,
+      "description": "Filters for tickets associated with any of the provided Rev organizations (customers)."
+    },
+    {
+      "name": "ticket.severity",
+      "type": "array of strings",
+      "required": false,
+      "description": "Filters for tickets with any of the provided severities. Allowed values: blocker, high, low, medium."
+    },
+    {
+      "name": "ticket.source_channel",
+      "type": "array of strings",
+      "required": false,
+      "description": "Filters for tickets with any of the provided source channels, for example slack or email."
+    },
+    {
+      "name": "type",
+      "type": "array of strings",
+      "required": false,
+      "description": "Filters for work of the provided types. Allowed values: issue, ticket, task."
+    }
+  ],
+  "returns": [
+    {
+      "name": "work_ids",
+      "type": "array of strings",
+      "description": "IDs of the work items that match the filters."
+    }
+  ],
+  "examples": [
+    "What are my issues in triage?",
+    "Return my work list",
+    "List high severity tickets from customer Acme",
+    "Get my P0 issues"
+  ]
+}

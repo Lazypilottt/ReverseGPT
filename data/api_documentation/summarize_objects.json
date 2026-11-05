@@ -1,0 +1,24 @@
+{
+  "name": "summarize_objects",
+  "description": "Summarizes a list of objects. How a given object type is summarized is an internal implementation detail.",
+  "arguments": [
+    {
+      "name": "objects",
+      "type": "array of strings",
+      "required": true,
+      "description": "The objects to summarize."
+    }
+  ],
+  "returns": [
+    {
+      "name": "summary",
+      "type": "string",
+      "description": "A summary of the objects."
+    }
+  ],
+  "examples": [
+    "Summarize the work items",
+    "Summarize the sprint",
+    "Generate a summary of them"
+  ]
+}

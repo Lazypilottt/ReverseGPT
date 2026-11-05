@@ -1,0 +1,23 @@
+{
+  "name": "get_similar_work_items",
+  "description": "Returns a list of work items that are similar to the given work item.",
+  "arguments": [
+    {
+      "name": "work_id",
+      "type": "string",
+      "required": true,
+      "description": "The ID of the work item to find similar items for."
+    }
+  ],
+  "returns": [
+    {
+      "name": "similar_work_items",
+      "type": "array of strings",
+      "description": "IDs of work items similar to the given one."
+    }
+  ],
+  "examples": [
+    "Get all the items similar to this work item",
+    "Find issues similar to don:core:dvrv-us-1:devo/0:issue/1"
+  ]
+}

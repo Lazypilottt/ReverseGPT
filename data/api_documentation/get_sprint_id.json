@@ -1,0 +1,17 @@
+{
+  "name": "get_sprint_id",
+  "description": "Returns the ID of the current sprint.",
+  "arguments": [],
+  "returns": [
+    {
+      "name": "sprint_id",
+      "type": "string",
+      "description": "The ID of the current sprint."
+    }
+  ],
+  "examples": [
+    "What is the current sprint id?",
+    "What is my current sprint?",
+    "Add this to the sprint"
+  ]
+}
