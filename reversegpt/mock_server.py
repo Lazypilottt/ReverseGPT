@@ -1,8 +1,8 @@
-"""Stand-in for the DevRev API so the whole pipeline can run offline.
+"""Stand-in for the DevRev API: the ``devrev`` toolkit, which runs fully offline.
 
 Responses are deterministic: the same inputs always give the same IDs, which
 keeps runs reproducible and tests stable. Output keys match the ``returns``
-names in data/api_documentation.
+names in reversegpt/toolkits/devrev.
 """
 
 from __future__ import annotations

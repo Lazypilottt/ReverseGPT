@@ -1,0 +1,30 @@
+{
+  "name": "find_similar_issues",
+  "description": "Finds issues whose titles look similar to a given issue, to spot duplicates or related reports.",
+  "arguments": [
+    {
+      "name": "issue_number",
+      "type": "integer",
+      "required": true,
+      "description": "Number of the issue to compare against."
+    },
+    {
+      "name": "limit",
+      "type": "integer",
+      "required": false,
+      "description": "Maximum number of similar issues to return (default 5)."
+    }
+  ],
+  "returns": [
+    {
+      "name": "similar_issues",
+      "type": "array of integers",
+      "description": "Numbers of similar issues, most similar first."
+    }
+  ],
+  "examples": [
+    "Is #482 a duplicate?",
+    "Find issues related to #17",
+    "Has this bug been reported before?"
+  ]
+}

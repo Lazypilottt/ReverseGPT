@@ -171,3 +171,25 @@ def test_settings_defaults_and_env(tmp_path, monkeypatch):
     cfg.write_text('[llm]\napi_key = sk-file\nmodel = "gpt-x"\n[agent]\nmax_plan_steps = 4\n')
     s = load_settings(cfg)
     assert (s.api_key, s.model, s.max_plan_steps) == ("sk-file", "gpt-x", 4)
+
+
+def test_settings_toolkit_paths_and_github_token(tmp_path, monkeypatch):
+    monkeypatch.delenv("GITHUB_TOKEN", raising=False)
+    monkeypatch.setenv("GH_TOKEN", "gh-env")
+    monkeypatch.setenv("XDG_CACHE_HOME", str(tmp_path / "cache"))
+
+    s = load_settings(tmp_path / "missing.ini")
+    assert s.toolkit == "devrev"
+    assert (s.tools_path / "work_list.json").is_file()  # bundled with the package
+    assert s.index_path == tmp_path / "cache" / "reversegpt" / "index" / "devrev"
+    assert s.github_token == "gh-env"
+
+    cfg = tmp_path / "config.ini"
+    cfg.write_text("[tools]\ntoolkit = github\n[github]\nrepo = acme/app\n")
+    s = load_settings(cfg)
+    assert (s.toolkit, s.github_repo) == ("github", "acme/app")
+    assert (s.tools_path / "search_issues.json").is_file()
+
+    cfg.write_text("[tools]\ntoolkit = jira\n")
+    with pytest.raises(ValueError, match="unknown toolkit"):
+        load_settings(cfg)

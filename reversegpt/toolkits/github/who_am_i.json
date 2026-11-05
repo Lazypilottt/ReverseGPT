@@ -1,0 +1,16 @@
+{
+  "name": "who_am_i",
+  "description": "Returns the GitHub login of the person whose token is being used, i.e. the current user.",
+  "arguments": [],
+  "returns": [
+    {
+      "name": "login",
+      "type": "string",
+      "description": "GitHub login (username) of the current user."
+    }
+  ],
+  "examples": [
+    "Who am I?",
+    "What is my GitHub username?"
+  ]
+}

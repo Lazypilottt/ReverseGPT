@@ -1,0 +1,24 @@
+{
+  "name": "summarize_issues",
+  "description": "Writes a short digest of issues: open/closed counts, common labels, unassigned work, the oldest and the most discussed issue.",
+  "arguments": [
+    {
+      "name": "issue_numbers",
+      "type": "array of integers",
+      "required": true,
+      "description": "Numbers of the issues to summarize."
+    }
+  ],
+  "returns": [
+    {
+      "name": "summary",
+      "type": "string",
+      "description": "The digest."
+    }
+  ],
+  "examples": [
+    "Summarize the open bugs",
+    "Give me a standup overview",
+    "What is going on in the milestone?"
+  ]
+}

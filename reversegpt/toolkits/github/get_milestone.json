@@ -1,0 +1,24 @@
+{
+  "name": "get_milestone",
+  "description": "Returns the number of a milestone. With no title it returns the current milestone: the open one due soonest.",
+  "arguments": [
+    {
+      "name": "title",
+      "type": "string",
+      "required": false,
+      "description": "Milestone title, e.g. \"v2.1\". Leave out for the current milestone."
+    }
+  ],
+  "returns": [
+    {
+      "name": "milestone_number",
+      "type": "integer",
+      "description": "Number of the milestone."
+    }
+  ],
+  "examples": [
+    "Which milestone are we in?",
+    "Find the v2.0 milestone",
+    "current sprint"
+  ]
+}

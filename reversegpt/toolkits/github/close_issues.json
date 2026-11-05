@@ -1,0 +1,31 @@
+{
+  "name": "close_issues",
+  "description": "Closes issues, optionally leaving a comment first.",
+  "writes": true,
+  "arguments": [
+    {
+      "name": "issue_numbers",
+      "type": "array of integers",
+      "required": true,
+      "description": "Numbers of the issues to close."
+    },
+    {
+      "name": "reason",
+      "type": "string",
+      "required": false,
+      "description": "\"completed\" (done) or \"not planned\" (stale, duplicate, won't fix)."
+    },
+    {
+      "name": "comment",
+      "type": "string",
+      "required": false,
+      "description": "Comment to post on each issue before closing it."
+    }
+  ],
+  "returns": [],
+  "examples": [
+    "Close stale questions",
+    "Close #40 as a duplicate",
+    "Close these with a thank-you note"
+  ]
+}

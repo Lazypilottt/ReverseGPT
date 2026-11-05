@@ -1,0 +1,41 @@
+Example 1
+User query: Assign the unassigned bugs to me and put them in the current milestone.
+Plan step 1: Find open issues labeled bug that nobody is assigned to.
+API response: search_issues returned issue_numbers = $$PREV[0]. Found 3 matching issues: #41 Login times out; #44 Crash on save; #47 Wrong date format.
+Plan step 2: Assign the issues $$PREV[0] to @me.
+API response: assign_issues ran successfully. [dry run] Would assign @octocat to #41 Login times out; #44 Crash on save; #47 Wrong date format.
+Plan step 3: Get the current milestone.
+API response: get_milestone returned milestone_number = $$PREV[1]. Milestone 'v2.1' (#4, 12 open issues, due 2026-12-01).
+Plan step 4: Add the issues $$PREV[0] to milestone $$PREV[1].
+API response: add_issues_to_milestone ran successfully. [dry run] Would add #41 Login times out; #44 Crash on save; #47 Wrong date format to milestone 'v2.1'.
+Thought: The bugs are assigned and scheduled (as a dry run), so the request is done.
+Final Answer: 3 unassigned bugs (#41, #44, #47) would be assigned to you and added to milestone v2.1.
+
+Example 2
+User query: Is #482 a duplicate? Summarize anything similar.
+Plan step 1: Find issues similar to #482.
+API response: find_similar_issues returned similar_issues = $$PREV[0]. Issues similar to #482 Upload fails for large files: #301 Large file upload fails (closed, shares: files, large, upload).
+Plan step 2: Summarize the issues $$PREV[0].
+API response: summarize_issues returned summary = $$PREV[1]. 1 issues (0 open, 1 closed). Issues: #301 Large file upload fails.
+Thought: There is one closed issue with the same problem, so the request is done.
+Final Answer: #482 looks like a duplicate of #301 "Large file upload fails", which is already closed.
+
+Example 3
+User query: Close questions that have had no activity for 90 days, and tell people why.
+Plan step 1: Find open issues labeled question with no activity in the last 90 days.
+API response: search_issues returned issue_numbers = $$PREV[0]. Found 2 matching issues: #12 How do I configure X; #19 Does this work on Windows.
+Plan step 2: Close the issues $$PREV[0] as not planned, commenting that they were closed after 90 days without activity and can be reopened.
+API response: close_issues ran successfully. [dry run] Would close #12 How do I configure X; #19 Does this work on Windows as not planned, commenting 'Closing after 90 days without activity...'.
+Thought: The stale questions are handled (as a dry run), so the request is done.
+Final Answer: 2 stale questions (#12, #19) would be closed with an explanation.
+
+Example 4
+User query: Prioritize the open p1 and p0 bugs and tell me what to fix first.
+Plan step 1: Find open issues labeled bug with label p0.
+API response: search_issues returned issue_numbers = $$PREV[0]. Found 1 matching issues: #88 Data loss on sync.
+Plan step 2: Find open issues labeled bug with label p1.
+API response: search_issues returned issue_numbers = $$PREV[1]. Found 2 matching issues: #90 Slow search; #93 Broken link in email.
+Plan step 3: Prioritize the issues $$PREV[0] and $$PREV[1].
+API response: prioritize_issues returned prioritized_issues = $$PREV[2]. Highest priority first: #88 Data loss on sync (p0); #90 Slow search (p1, 12 reactions); #93 Broken link in email (p1).
+Thought: The bugs are ranked, so the request is done.
+Final Answer: Fix #88 (data loss, p0) first, then #90 and #93.

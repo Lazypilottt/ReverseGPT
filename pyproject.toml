@@ -5,12 +5,12 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "reversegpt"
 version = "1.0.0"
-description = "Turn natural-language requests into chained API calls with a planner and Reverse Chain."
+description = "Triage GitHub issues in plain English: a planner plus Reverse Chain turns one request into the right chain of API calls."
 readme = "README.md"
 license = { file = "LICENSE" }
 authors = [{ name = "Aditya Yadav" }]
 requires-python = ">=3.10"
-keywords = ["llm", "tool-use", "function-calling", "agents", "langchain", "faiss"]
+keywords = ["llm", "tool-use", "function-calling", "agents", "github", "issue-triage", "langchain", "faiss"]
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -23,6 +23,7 @@ dependencies = [
     "langchain-huggingface>=1.0,<2",
     "sentence-transformers>=3.0",
     "faiss-cpu>=1.8",
+    "certifi",
 ]
 
 [project.optional-dependencies]
@@ -36,6 +37,9 @@ Repository = "https://github.com/Lazypilottt/ReverseGPT"
 
 [tool.setuptools]
 packages = ["reversegpt"]
+
+[tool.setuptools.package-data]
+reversegpt = ["toolkits/*/*.json", "toolkits/*/*.txt"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

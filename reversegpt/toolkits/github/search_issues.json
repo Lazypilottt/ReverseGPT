@@ -1,0 +1,86 @@
+{
+  "name": "search_issues",
+  "description": "Searches the repository's issues with filters (state, labels, assignee, author, milestone, inactivity, keywords) and returns their numbers.",
+  "arguments": [
+    {
+      "name": "state",
+      "type": "string",
+      "required": false,
+      "description": "Issue state: \"open\" (default), \"closed\" or \"all\"."
+    },
+    {
+      "name": "labels",
+      "type": "array of strings",
+      "required": false,
+      "description": "Only issues that have all of these labels, e.g. [\"bug\"]."
+    },
+    {
+      "name": "assignee",
+      "type": "string",
+      "required": false,
+      "description": "Login of the person the issues are assigned to. \"@me\" means the current user."
+    },
+    {
+      "name": "unassigned",
+      "type": "boolean",
+      "required": false,
+      "description": "Only issues that nobody is assigned to."
+    },
+    {
+      "name": "author",
+      "type": "string",
+      "required": false,
+      "description": "Login of the person who opened the issues. \"@me\" means the current user."
+    },
+    {
+      "name": "milestone_number",
+      "type": "integer",
+      "required": false,
+      "description": "Only issues in this milestone."
+    },
+    {
+      "name": "no_milestone",
+      "type": "boolean",
+      "required": false,
+      "description": "Only issues that are not in any milestone."
+    },
+    {
+      "name": "text",
+      "type": "string",
+      "required": false,
+      "description": "Words to look for in the title and body."
+    },
+    {
+      "name": "inactive_days",
+      "type": "integer",
+      "required": false,
+      "description": "Only issues with no activity in the last N days (stale issues)."
+    },
+    {
+      "name": "sort",
+      "type": "string",
+      "required": false,
+      "description": "Order: \"created\", \"updated\", \"comments\" or \"reactions\" (highest first). Default: best match."
+    },
+    {
+      "name": "limit",
+      "type": "integer",
+      "required": false,
+      "description": "Maximum number of issues to return (1-100, default 30)."
+    }
+  ],
+  "returns": [
+    {
+      "name": "issue_numbers",
+      "type": "array of integers",
+      "description": "Numbers of the matching issues."
+    }
+  ],
+  "examples": [
+    "Show my open bugs",
+    "Find unassigned issues labeled p1",
+    "Issues with no activity in 60 days",
+    "Most upvoted open feature requests",
+    "Open issues that mention login timeout"
+  ]
+}

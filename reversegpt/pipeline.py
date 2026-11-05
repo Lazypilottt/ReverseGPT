@@ -71,11 +71,16 @@ class ReverseGPT:
         top_k: int = 5,
         max_plan_steps: int = 8,
         max_chain_depth: int = 3,
+        planner_examples: str | None = None,
     ):
         self.registry = registry
         self.retriever = retriever
         self.executor = executor or Executor()
-        self.planner = Planner(llm, registry)
+        self.planner = (
+            Planner(llm, registry, examples=planner_examples)
+            if planner_examples
+            else Planner(llm, registry)
+        )
         self.selector = ApiSelector(llm)
         self.extractor = ArgumentExtractor(llm)
         self.providers = ProviderSelector(llm, registry)
@@ -84,20 +89,32 @@ class ReverseGPT:
         self.max_chain_depth = max_chain_depth
 
     @classmethod
-    def from_settings(cls, settings: Settings) -> ReverseGPT:
+    def from_settings(cls, settings: Settings, *, apply: bool = False) -> ReverseGPT:
+        """Build the agent for ``settings.toolkit``.
+
+        ``apply`` lets tools that change data (create, assign, close, ...)
+        actually do it. Without it they only report what they would do.
+        """
+        from reversegpt.backends import build_handlers, planner_examples
         from reversegpt.llm import build_chat_model
         from reversegpt.retriever import ToolRetriever, build_embeddings
 
-        registry = ApiRegistry.from_directory(settings.docs_dir)
+        # Cheap checks first, so a missing key or repo fails before the model loads.
+        llm = build_chat_model(settings)
+        registry = ApiRegistry.from_directory(settings.tools_path)
+        handlers = build_handlers(settings, apply=apply)
+
         embeddings = build_embeddings(settings.embedding_model)
-        retriever = ToolRetriever.load_or_build(settings.index_dir, registry, embeddings)
+        retriever = ToolRetriever.load_or_build(settings.index_path, registry, embeddings)
         return cls(
-            build_chat_model(settings),
+            llm,
             registry,
             retriever,
+            Executor(handlers),
             top_k=settings.top_k,
             max_plan_steps=settings.max_plan_steps,
             max_chain_depth=settings.max_chain_depth,
+            planner_examples=planner_examples(settings.tools_path),
         )
 
     # ------------------------------------------------------------------ loop

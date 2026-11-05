@@ -1,0 +1,24 @@
+{
+  "name": "add_labels",
+  "description": "Adds labels to issues.",
+  "writes": true,
+  "arguments": [
+    {
+      "name": "issue_numbers",
+      "type": "array of integers",
+      "required": true,
+      "description": "Numbers of the issues to label."
+    },
+    {
+      "name": "labels",
+      "type": "array of strings",
+      "required": true,
+      "description": "Labels to add, e.g. [\"p1\", \"needs-triage\"]."
+    }
+  ],
+  "returns": [],
+  "examples": [
+    "Label these as duplicate",
+    "Tag the crash reports with p0"
+  ]
+}

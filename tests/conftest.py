@@ -11,12 +11,18 @@ import pytest
 from reversegpt.registry import ApiRegistry
 
 ROOT = Path(__file__).resolve().parent.parent
-DOCS = ROOT / "data" / "api_documentation"
+DOCS = ROOT / "reversegpt" / "toolkits" / "devrev"
+GITHUB_DOCS = ROOT / "reversegpt" / "toolkits" / "github"
 
 
 @pytest.fixture(scope="session")
 def registry() -> ApiRegistry:
     return ApiRegistry.from_directory(DOCS)
+
+
+@pytest.fixture(scope="session")
+def github_registry() -> ApiRegistry:
+    return ApiRegistry.from_directory(GITHUB_DOCS)
 
 
 class StaticRetriever:

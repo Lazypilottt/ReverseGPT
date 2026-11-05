@@ -1,0 +1,49 @@
+{
+  "name": "create_issues",
+  "description": "Creates one issue per title, for example from meeting notes or a list of action items.",
+  "writes": true,
+  "arguments": [
+    {
+      "name": "titles",
+      "type": "array of strings",
+      "required": true,
+      "description": "One title per issue to create."
+    },
+    {
+      "name": "body",
+      "type": "string",
+      "required": false,
+      "description": "Description added to every created issue."
+    },
+    {
+      "name": "labels",
+      "type": "array of strings",
+      "required": false,
+      "description": "Labels to put on the new issues."
+    },
+    {
+      "name": "assignees",
+      "type": "array of strings",
+      "required": false,
+      "description": "Logins to assign the new issues to. \"@me\" means the current user."
+    },
+    {
+      "name": "milestone_number",
+      "type": "integer",
+      "required": false,
+      "description": "Milestone to put the new issues in."
+    }
+  ],
+  "returns": [
+    {
+      "name": "created_issues",
+      "type": "array of integers",
+      "description": "Numbers of the created issues."
+    }
+  ],
+  "examples": [
+    "Turn these meeting notes into issues",
+    "Create issues for each action item",
+    "File a bug for the broken login page"
+  ]
+}

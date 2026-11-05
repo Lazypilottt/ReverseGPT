@@ -35,6 +35,7 @@ class ApiSpec:
     arguments: tuple[Argument, ...] = ()
     returns: tuple[Output, ...] = ()
     examples: tuple[str, ...] = ()
+    writes: bool = False  # changes data; such tools run as a dry run unless applied
 
     @property
     def required_arguments(self) -> tuple[Argument, ...]:
@@ -90,6 +91,7 @@ class ApiSpec:
                     for o in data.get("returns", [])
                 ),
                 examples=tuple(data.get("examples", [])),
+                writes=bool(data.get("writes", False)),
             )
         except (KeyError, TypeError) as exc:
             raise ToolDocError(f"{source}: invalid tool doc ({exc!r})") from exc

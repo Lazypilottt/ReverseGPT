@@ -1,0 +1,24 @@
+{
+  "name": "prioritize_issues",
+  "description": "Orders issues by urgency: priority and severity labels first, then reactions, discussion and age.",
+  "arguments": [
+    {
+      "name": "issue_numbers",
+      "type": "array of integers",
+      "required": true,
+      "description": "Numbers of the issues to order."
+    }
+  ],
+  "returns": [
+    {
+      "name": "prioritized_issues",
+      "type": "array of integers",
+      "description": "The same issue numbers, most urgent first."
+    }
+  ],
+  "examples": [
+    "Prioritize these bugs",
+    "What should we fix first?",
+    "Rank the open issues by urgency"
+  ]
+}
