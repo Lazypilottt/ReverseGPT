@@ -1,0 +1,24 @@
+{
+  "name": "search_object_by_name",
+  "description": "Given a search string, returns the ID of the best matching object in the system of record (a customer, part, or user).",
+  "arguments": [
+    {
+      "name": "query",
+      "type": "string",
+      "required": true,
+      "description": "The search string, for example a customer name, part name, or username."
+    }
+  ],
+  "returns": [
+    {
+      "name": "id",
+      "type": "string",
+      "description": "The ID of the best matching object."
+    }
+  ],
+  "examples": [
+    "Find the customer UltimateCustomer",
+    "Get tickets coming from this customer",
+    "What is the id of part FE-102?"
+  ]
+}

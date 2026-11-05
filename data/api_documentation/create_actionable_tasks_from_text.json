@@ -1,0 +1,23 @@
+{
+  "name": "create_actionable_tasks_from_text",
+  "description": "Extracts actionable items from a piece of text (meeting notes, a transcript) and creates a task for each one.",
+  "arguments": [
+    {
+      "name": "text",
+      "type": "string",
+      "required": true,
+      "description": "The text to extract action items from."
+    }
+  ],
+  "returns": [
+    {
+      "name": "work_ids",
+      "type": "array of strings",
+      "description": "IDs of the tasks that were created."
+    }
+  ],
+  "examples": [
+    "Create action items from this transcript",
+    "Turn these meeting notes into tasks"
+  ]
+}

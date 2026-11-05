@@ -1,0 +1,24 @@
+{
+  "name": "add_work_items_to_sprint",
+  "description": "Adds the given work items to a sprint.",
+  "arguments": [
+    {
+      "name": "work_ids",
+      "type": "array of strings",
+      "required": true,
+      "description": "IDs of the work items to add to the sprint."
+    },
+    {
+      "name": "sprint_id",
+      "type": "string",
+      "required": true,
+      "description": "The ID of the sprint to add the work items to."
+    }
+  ],
+  "returns": [],
+  "examples": [
+    "Add all P0 issues to the current sprint",
+    "Add them to my sprint",
+    "Add these work items to the current sprint"
+  ]
+}

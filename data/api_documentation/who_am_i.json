@@ -1,0 +1,17 @@
+{
+  "name": "who_am_i",
+  "description": "Returns the ID of the current user.",
+  "arguments": [],
+  "returns": [
+    {
+      "name": "user_id",
+      "type": "string",
+      "description": "The ID of the current user."
+    }
+  ],
+  "examples": [
+    "Who am I?",
+    "What is my user id?",
+    "Add this to my sprint"
+  ]
+}
